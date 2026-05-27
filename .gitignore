@@ -1,0 +1,34 @@
+# Build
+/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven wrapper exception
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs/temp
+*.log
+*.tmp
+
+# Local application data
+/data/
+
+# Environment files
+.env
+.env.*

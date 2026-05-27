@@ -1,0 +1,16 @@
+Исправление запуска MySQL
+
+Причина ошибки:
+Unsupported character encoding 'utf8mb4' возникала из-за параметра JDBC URL characterEncoding=utf8mb4.
+
+В MySQL Connector/J параметр characterEncoding должен быть Java-кодировкой, например UTF-8.
+Для кодировки таблиц utf8mb4 используется connectionCollation=utf8mb4_unicode_ci, а не characterEncoding=utf8mb4.
+
+Исправленный URL находится в:
+src/main/resources/application-mysql.yml
+
+Запуск:
+run-mysql.bat
+
+или:
+mvn spring-boot:run -Dspring-boot.run.profiles=mysql

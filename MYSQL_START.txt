@@ -1,0 +1,44 @@
+КАК ЗАПУСТИТЬ ПРОЕКТ С MYSQL
+
+1. Запусти MySQL.
+
+Если используешь Docker, в папке проекта выполни:
+
+docker compose up -d
+
+Будет создана база:
+- database: uas_db
+- user: root
+- password: root
+
+2. Запусти проект:
+
+run-mysql.bat
+
+или командой:
+
+mvn spring-boot:run -Dspring-boot.run.profiles=mysql
+
+3. Проверь сайт:
+
+http://localhost:8080
+
+4. После этого данные будут записываться в MySQL, а не в data/uas-db.mv.db.
+
+Что сохраняется в MySQL:
+- добавленные БПЛА -> таблица drones
+- созданные миссии -> таблица simulation_sessions
+- точки маршрута -> таблица waypoints
+- телеметрия полёта -> таблица telemetry_records
+- оповещения -> таблица alerts
+
+ВАЖНО:
+SQL CREATE TABLE вручную больше запускать не нужно. В проекте включён Hibernate ddl-auto=update, поэтому таблицы создаются/обновляются автоматически.
+
+Если у тебя другой пароль от MySQL:
+- открой run-mysql.bat;
+- поменяй MYSQL_PASSWORD=root на свой пароль.
+
+Если всё-таки нужен старый режим с data/uas-db.mv.db, запускай:
+
+run-h2.bat

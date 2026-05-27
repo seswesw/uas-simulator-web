@@ -1,0 +1,43 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: uas-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 322Seswesw/
+      MYSQL_DATABASE: uas_db
+      MYSQL_USER: assa
+      MYSQL_PASSWORD: 322Seswesw/
+
+    volumes:
+      - uas-mysql-data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "uas", "-puas"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: uas-simulator-web:latest
+    container_name: uas-app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: mysql
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: uas_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 322Seswesw/
+    ports:
+      - "8080:8080"
+
+volumes:
+  uas-mysql-data:

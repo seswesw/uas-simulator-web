@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:uas_db}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Moscow&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8mb4_unicode_ci
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:322Seswesw/}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      # В учебном проекте удобнее update: Hibernate сам создаёт/обновляет таблицы в MySQL.
+      # Поэтому данные идут в MySQL без ручного запуска CREATE TABLE.
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  flyway:
+    # Отключено, чтобы не было конфликтов с уже созданными вручную таблицами.
+    # SQL-скрипт оставлен в проекте как справочный материал для курсовой.
+    enabled: false
