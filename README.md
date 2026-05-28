@@ -179,15 +179,6 @@ CRUD через `GET/POST/DELETE /api/drones`. Хранятся позывной
 Поддерживаются протоколы **HTTP**, **MQTT**, **MAVLink (через мост)**.  
 Подробно: [docs/REAL_DRONE.md](docs/REAL_DRONE.md)
 
-## Миграции БД (Flyway)
-
-Новые версии схемы добавляйте файлами:
-
-`src/main/resources/db/migration/V2__описание.sql`
-
-Примеры: `V2__add_operator_table.sql`, `V3__add_indexes.sql`.
-
-Flyway выполняется только при профиле **`mysql`**.
 
 ## Развитие
 
