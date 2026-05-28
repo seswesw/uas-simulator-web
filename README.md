@@ -28,6 +28,8 @@
 
 ## Запуск
 
+### Сайт: http://135.106.156.53:8080/
+
 ### Требования
 
 - JDK 17+
@@ -63,6 +65,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=mysql
 | `MYSQL_DATABASE` | uas_db |
 | `MYSQL_USER` | uas |
 | `MYSQL_PASSWORD` | uas |
+
 
 ### Вариант B — H2 (быстрый старт без MySQL)
 
